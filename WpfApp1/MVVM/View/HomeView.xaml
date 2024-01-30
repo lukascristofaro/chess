@@ -5,22 +5,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" 
+             d:DesignHeight="500" 
              d:DesignWidth="800">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Border Width="799"
-                    Height="451">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="Blue" Offset="-1"/>
-                        <GradientStop Color="Red" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+            <!-- Ajout de l'échiquier -->
+            <Border Width="500" Height="400" Background="#B04F4F" CornerRadius="20">
+                <Grid x:Name="ChessGrid">
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Width" Value="50"/>
+                            <Setter Property="Height" Value="50"/>
+                        </Style>
+                    </Grid.Resources>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
             </Border>
-
-
         </StackPanel>
-        
     </StackPanel>
 </UserControl>
