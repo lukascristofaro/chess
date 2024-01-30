@@ -11,7 +11,7 @@
         <StackPanel Orientation="Horizontal">
             <!-- Ajout de l'échiquier -->
             <Border Width="500" Height="400" Background="#B04F4F" CornerRadius="20">
-                <Grid x:Name="ChessGrid">
+                <Grid x:Name="ChessGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.Resources>
                         <Style TargetType="Button">
                             <Setter Property="BorderBrush" Value="Black"/>
