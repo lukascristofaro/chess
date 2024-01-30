@@ -19,7 +19,42 @@
     
     <Border Background="#272537" CornerRadius="20">
         <Grid>
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
+
+
+                <RadioButton Content="view1"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding View2Command}"/>
+
+                <RadioButton Content="view2"
+                             Height="50"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding View3Command}"/>
+
+
+            </StackPanel>
             <ContentControl Grid.Row="1"
                         Grid.Column="1"
                             Margin="10"

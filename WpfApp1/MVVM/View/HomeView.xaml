@@ -8,14 +8,9 @@
              d:DesignHeight="450" 
              d:DesignWidth="800">
     <StackPanel>
-        <TextBlock Text="Présentation"
-                   Foreground="White"
-                   FontSize="28"
-                   HorizontalAlignment="Left"
-                   Margin="0,0,0,20"/>
         <StackPanel Orientation="Horizontal">
-            <Border Width="400"
-                    Height="200">
+            <Border Width="799"
+                    Height="451">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                         <GradientStop Color="Blue" Offset="-1"/>
@@ -26,10 +21,6 @@
 
 
         </StackPanel>
-        <TextBlock Text="La première vue est afficher ici"
-                   Foreground="White"
-                   FontSize="18"
-                   HorizontalAlignment="Left"
-                   Margin="0,0,0,20"/>
+        
     </StackPanel>
 </UserControl>
