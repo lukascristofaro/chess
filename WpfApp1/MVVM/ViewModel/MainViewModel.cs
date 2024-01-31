@@ -10,11 +10,9 @@ namespace WpfApp1.MVVM.ViewModel
     {
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand View2Command { get; set; }
-        public RelayCommand View3Command { get; set; }
 
         HomeViewModel HomeView { get; set; }
-        ViewModel2 viewModel2 { get; set; }
-        ViewModel3 viewModel3 { get; set; }
+        ViewModel2 View2 { get; set; }
 
         private object m_currentView;
 
@@ -31,8 +29,7 @@ namespace WpfApp1.MVVM.ViewModel
         public MainViewModel()
         {
             HomeView = new HomeViewModel();
-            viewModel2 = new ViewModel2();
-            viewModel3 = new ViewModel3();
+            View2 = new ViewModel2();
 
             CurrentView = HomeView;
 
@@ -44,13 +41,9 @@ namespace WpfApp1.MVVM.ViewModel
             
             View2Command = new RelayCommand(o =>
             {
-                CurrentView = viewModel2;
+                CurrentView = View2;
             });
 
-            View3Command = new RelayCommand(o =>
-            {
-                CurrentView = viewModel3;
-            });
         }
     }
 }
