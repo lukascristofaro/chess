@@ -16,8 +16,8 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
-    <Border Background="#109888" CornerRadius="20">
+
+    <Border Background="#1F1F1F" CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
 
 
-            <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="1" VerticalAlignment="top" Margin="10">
                 <RadioButton Content="Play"
                              Height="50"
                              Foreground="White"
@@ -52,9 +52,5 @@
                             Margin="10"
                             Content="{Binding CurrentView}"/>
         </Grid>
-
-
-
     </Border>
-
 </Window>

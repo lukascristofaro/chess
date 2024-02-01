@@ -1,0 +1,174 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "whitePieces": [
+    {
+      "type": "Pawn",
+      "x": 0,
+      "y": 6
+    },
+    {
+      "type": "Pawn",
+      "x": 1,
+      "y": 6
+    },
+    {
+      "type": "Pawn",
+      "x": 2,
+      "y": 6
+    },
+    {
+      "type": "Pawn",
+      "x": 3,
+      "y": 6
+    },
+    {
+      "type": "Pawn",
+      "x": 4,
+      "y": 6
+    },
+    {
+      "type": "Pawn",
+      "x": 5,
+      "y": 6
+    },
+    {
+      "type": "Pawn",
+      "x": 6,
+      "y": 6
+    },
+    {
+      "type": "Pawn",
+      "x": 7,
+      "y": 6
+    },
+    {
+      "type": "Tower",
+      "x": 0,
+      "y": 7
+    },
+    {
+      "type": "Knight",
+      "x": 1,
+      "y": 7
+    },
+    {
+      "type": "Bishop",
+      "x": 2,
+      "y": 7
+    },
+    {
+      "type": "Queen",
+      "x": 3,
+      "y": 7
+    },
+    {
+      "type": "King",
+      "x": 4,
+      "y": 7
+    },
+    {
+      "type": "Bishop",
+      "x": 5,
+      "y": 7
+    },
+    {
+      "type": "Knight",
+      "x": 6,
+      "y": 7
+    },
+    {
+      "type": "Tower",
+      "x": 7,
+      "y": 7
+    }
+  ],
+  "blackPieces": [
+    {
+      "type": "Pawn",
+      "x": 0,
+      "y": 1
+    },
+    {
+      "type": "Pawn",
+      "x": 1,
+      "y": 1
+    },
+    {
+      "type": "Pawn",
+      "x": 2,
+      "y": 1
+    },
+    {
+      "type": "Pawn",
+      "x": 3,
+      "y": 1
+    },
+    {
+      "type": "Pawn",
+      "x": 4,
+      "y": 1
+    },
+    {
+      "type": "Pawn",
+      "x": 5,
+      "y": 1
+    },
+    {
+      "type": "Pawn",
+      "x": 6,
+      "y": 1
+    },
+    {
+      "type": "Pawn",
+      "x": 7,
+      "y": 1
+    },
+    {
+      "type": "Tower",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "type": "Knight",
+      "x": 1,
+      "y": 0
+    },
+    {
+      "type": "Bishop",
+      "x": 2,
+      "y": 0
+    },
+    {
+      "type": "Queen",
+      "x": 3,
+      "y": 0
+    },
+    {
+      "type": "King",
+      "x": 4,
+      "y": 0
+    },
+    {
+      "type": "Bishop",
+      "x": 5,
+      "y": 0
+    },
+    {
+      "type": "Knight",
+      "x": 6,
+      "y": 0
+    },
+    {
+      "type": "Tower",
+      "x": 7,
+      "y": 0
+    }
+  ]
+}
