@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,17 +14,70 @@ namespace WpfApp1.MVVM.ViewModel
     {
         public static void SaveChessPieces(string[,] chessPieces)
         {
-            // Convert the array to JSON
-            string jsonContent = JsonConvert.SerializeObject(chessPieces, Formatting.Indented);
+            // Get the existing JSON content (if any)
+            string filePath = GetChessPiecesFilePath();
+            string existingJsonContent = "";
+            List<string[,]> chessPiecesList;
 
-            MessageBox.Show(jsonContent);
+            if (File.Exists(filePath))
+            {
+                existingJsonContent = File.ReadAllText(filePath);
+                // Désérialiser le contenu existant en une liste d'arrays de chaînes
+                chessPiecesList = JsonConvert.DeserializeObject<List<string[,]>>(existingJsonContent);
+            }
+            else
+            {
+                // Si le fichier n'existe pas, créer une nouvelle liste
+                chessPiecesList = new List<string[,]>();
+            }
 
-            // Save the JSON to a file in the project directory
+            // Ajouter chessPieces à la liste existante
+            chessPiecesList.Add(chessPieces);
+
+            // Sérialiser la liste mise à jour en format JSON
+            string updatedJsonContent = JsonConvert.SerializeObject(chessPiecesList, Formatting.Indented);
+
+            // Sauvegarder le nouveau contenu JSON dans le fichier
+            File.WriteAllText(filePath, updatedJsonContent);
+        }
+
+        private static string GetChessPiecesFilePath()
+        {
             DirectoryInfo directoryInfo = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
             string projectDirectory = directoryInfo.Parent.Parent.Parent.FullName;
-            string filePath = Path.Combine(projectDirectory, "ChessPieces.json");
+            return Path.Combine(projectDirectory, "ChessPieces.json");
+        }
 
-            File.WriteAllText(filePath, jsonContent);
+        public static void InitChessBoard(string[,] chessBoard)
+        {
+            string filePath = GetChessPiecesFilePath();
+
+            // Vérifier si le fichier existe
+            if (File.Exists(filePath))
+            {
+                // Charger le contenu existant
+                string existingJsonContent = File.ReadAllText(filePath);
+
+                // Désérialiser le contenu existant en une liste d'arrays de chaînes
+                List<string[,]> chessPiecesList = JsonConvert.DeserializeObject<List<string[,]>>(existingJsonContent);
+
+                // Ajouter le contenu de chessBoard à la liste existante
+                if (chessPiecesList == null)
+                {
+                    chessPiecesList = new List<string[,]>();
+                }
+                chessPiecesList.Add(chessBoard);
+
+                // Sérialiser la liste mise à jour en format JSON
+                string updatedJsonContent = JsonConvert.SerializeObject(chessPiecesList, Formatting.Indented);
+
+                // Sauvegarder le nouveau contenu JSON dans le fichier
+                File.WriteAllText(filePath, updatedJsonContent);
+            }
+            else
+            {
+                MessageBox.Show("Le fichier n'existe pas.");
+            }
         }
     }
 }
