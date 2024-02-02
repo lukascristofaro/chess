@@ -12,17 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.MVVM.ViewModel;
 
 namespace WpfApp1.MVVM.View
 {
-    /// <summary>
-    /// Logique d'interaction pour View2.xaml
-    /// </summary>
     public partial class View2 : UserControl
     {
         public View2()
         {
             InitializeComponent();
         }
+
+        private void BtnAvant_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void BtnApres_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
+
