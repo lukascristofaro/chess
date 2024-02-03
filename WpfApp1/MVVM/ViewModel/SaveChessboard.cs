@@ -121,7 +121,7 @@ namespace WpfApp1.MVVM.ViewModel
 
                 if (chessPiecesList != null)
                 {
-                    return chessPiecesList.Count;
+                    return chessPiecesList.Count - 1;
                 }
             }
             else
