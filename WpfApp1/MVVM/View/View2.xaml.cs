@@ -26,7 +26,6 @@ namespace WpfApp1.MVVM.View
         public View2()
         {
             InitializeComponent();
-            maxPosition = SaveChessboard.GetAllChessPieces();
 
             if (maxPosition > 0)
             {
