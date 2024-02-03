@@ -79,5 +79,57 @@ namespace WpfApp1.MVVM.ViewModel
                 MessageBox.Show("Le fichier n'existe pas.");
             }
         }
+
+        public static string[,] GetChessboardAtPosition(int positionIndex)
+        {
+            string filePath = GetChessPiecesFilePath();
+
+            // Vérifier si le fichier existe
+            if (File.Exists(filePath))
+            {
+                // Charger le contenu existant
+                string existingJsonContent = File.ReadAllText(filePath);
+
+                // Désérialiser le contenu en une liste d'arrays de chaînes
+                List<string[,]> chessPiecesList = JsonConvert.DeserializeObject<List<string[,]>>(existingJsonContent);
+
+                if (chessPiecesList != null && positionIndex >= 0 && positionIndex < chessPiecesList.Count)
+                {
+                    return chessPiecesList[positionIndex];
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le fichier n'existe pas.");
+            }
+
+            return null;
+        }
+
+        public static int GetAllChessPieces()
+        {
+            string filePath = GetChessPiecesFilePath();
+
+            // Vérifier si le fichier existe
+            if (File.Exists(filePath))
+            {
+                // Charger le contenu existant
+                string existingJsonContent = File.ReadAllText(filePath);
+
+                // Désérialiser le contenu en une liste d'arrays de chaînes
+                List<string[,]> chessPiecesList = JsonConvert.DeserializeObject<List<string[,]>>(existingJsonContent);
+
+                if (chessPiecesList != null)
+                {
+                    return chessPiecesList.Count;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le fichier n'existe pas.");
+            }
+            return 0;
+        }
+
     }
 }
