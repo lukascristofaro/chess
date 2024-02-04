@@ -154,7 +154,6 @@ namespace WpfApp1.MVVM.View
                 }
                 else
                 {
-                    MessageBox.Show($"Error");
                     chessPieces[destination[0], destination[1]] = selectedType;
                     chessPieces[selectedPiece[0], selectedPiece[1]] = "0";
 
