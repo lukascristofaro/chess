@@ -2,10 +2,6 @@
 
 The Chess project is a C# implementation with WPF of a local chess game, allowing players to compete in turn-based matches on the same PC. The game features a display system for move possibilities and a game recording functionality.
 
-## Demo
-
-Insert gif or link to demo
-
 ## Color Reference
 
 | Color             | Hex                                                                |
