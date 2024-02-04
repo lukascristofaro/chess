@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media.TextFormatting;
 using System.Reflection.PortableExecutable;
-//alexis
 
 namespace WpfApp1.MVVM.View
 {
@@ -21,20 +20,22 @@ namespace WpfApp1.MVVM.View
         }
         string[,] chessPieces = new string[8, 8]
             {
-                {"[2,1]", "[3,1]", "[4,1]", "[5,1]", "[6,1]", "[4,1]", "[3,1]", "[2,1]"},
+                {"[2,1]", "[3,1]", "[4,1]", "[6,1]", "[5,1]", "[4,1]", "[3,1]", "[2,1]"},
                 {"[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]"},
-                {"[8,2]", "[9,2]", "[10,2]", "[11,2]", "[12,2]", "[10,2]", "[9,2]", "[8,2]"}
+                {"[8,2]", "[9,2]", "[10,2]", "[12,2]", "[11,2]", "[10,2]", "[9,2]", "[8,2]"}
             };
 
         int[] selectedButton = new int[2];
         string selectedType = "";
         int[] selectedPiece = new int[2];
         List<int[]> pieceMoves = new List<int[]>();
+        private bool isPieceSelected = false;
+
 
         private void CreateChessboardButtons()
         {
@@ -82,50 +83,71 @@ namespace WpfApp1.MVVM.View
 
             if (sender is Button button)
             {
-                selectedButton = getPosition(button);
-                if (chessPieces[selectedButton[0], selectedButton[1]] != "0")
+                isPieceSelected = !isPieceSelected; // Toggle the selection status
+
+                if (isPieceSelected)
                 {
-                    selectedPiece = getPosition(button);
-                }
-                for (int i = 0; i < pieceMoves.Count; i++)
-                {
-                    if (isSameListe(pieceMoves[i], selectedButton) && chessPieces[pieceMoves[i][0], pieceMoves[i][1]] == "0")
+                    selectedButton = getPosition(button);
+                    if (chessPieces[selectedButton[0], selectedButton[1]] != "0")
                     {
-                        MessageBox.Show("Switch position");
-                        chessPieces[selectedButton[0], selectedButton[1]] = selectedType;
-                        chessPieces[selectedPiece[0], selectedPiece[1]] = "0";
+                        selectedPiece = getPosition(button);
+                        selectedType = getPieceCode(selectedButton);
 
+                        string pieceCode = getPieceCode(selectedButton);
+                        pieceMoves = getPiece(pieceCode, chessPieces, selectedButton);
 
-                        // Update the content of the buttons with the correct piece code
-                        UpdateChessboardButtonsContent();
+                        foreach (var move in pieceMoves)
+                        {
+                            int row = move[0];
+                            int col = move[1];
+                            Button targetButton = ChessGrid.Children
+                                .OfType<Button>()
+                                .FirstOrDefault(b => Grid.GetRow(b) == row && Grid.GetColumn(b) == col);
 
-                        break; // Exit the loop after the swap
+                            if (targetButton != null)
+                            {
+                                targetButton.Background = Brushes.Green;
+                                targetButton.Click += TargetButton_Click; // Add event handler for the selected move
+                            }
+                        }
                     }
                 }
-                selectedType = getPieceCode(selectedButton);
-
-                string str = "";
-                for (int i = 0; i < chessPieces.GetLength(0); i++)
+                else
                 {
-                    string rowString = string.Join(", ", Enumerable.Range(0, chessPieces.GetLength(1)).Select(j => chessPieces[i, j]));
-                    str += rowString + Environment.NewLine;
+                    // Deselect the piece and update the chessboard
+                    chessPieces[selectedButton[0], selectedButton[1]] = "0";
+                    chessPieces[Grid.GetRow(button), Grid.GetColumn(button)] = selectedType;
+
+                    UpdateChessboardButtonsContent();
+                }
+            }
+        }
+
+        private void TargetButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button targetButton)
+            {
+                int[] destination = getPosition(targetButton);
+
+                // Check if the destination is a valid move
+                if (pieceMoves.Contains(destination))
+                {
+                    // Move the piece to the destination
+                    chessPieces[destination[0], destination[1]] = selectedType;
+                    chessPieces[selectedPiece[0], selectedPiece[1]] = "0";
+
+                    // Update the chessboard
+                    UpdateChessboardButtonsContent();
+                }
+                else
+                {
+                    // Handle invalid move (e.g., display a message)
                 }
 
-                MessageBox.Show(str);
-
-
-                string pieceCode = getPieceCode(selectedButton);
-                pieceMoves = getPiece(pieceCode, chessPieces, selectedButton);
-
-                foreach (var move in pieceMoves)
+                // Remove the event handler from all buttons
+                foreach (Button b in ChessGrid.Children.OfType<Button>())
                 {
-                    int row = move[0];
-                    int col = move[1];
-                    Button targetButton = ChessGrid.Children
-                        .OfType<Button>()
-                        .First(b => Grid.GetRow(b) == row && Grid.GetColumn(b) == col);
-
-                    targetButton.Background = Brushes.Green;
+                    b.Click -= TargetButton_Click;
                 }
             }
         }
@@ -140,10 +162,32 @@ namespace WpfApp1.MVVM.View
         {
             Pawn blackPawn = new Pawn(piecePosition[0], piecePosition[1]);
             Pawn whitePawn = new Pawn(piecePosition[0], piecePosition[1]);
+            Tower blackTower = new Tower(piecePosition[0], piecePosition[1]);
+            Tower whiteTower = new Tower(piecePosition[0], piecePosition[1]);
+            Knight blacKnight = new Knight(piecePosition[0], piecePosition[1]);
+            Knight whiteKnight = new Knight(piecePosition[0], piecePosition[1]);
+            Bishop blackBishop = new Bishop(piecePosition[0], piecePosition[1]);
+            Bishop whiteBishop = new Bishop(piecePosition[0], piecePosition[1]);
+            King blackKing = new King(piecePosition[0], piecePosition[1]);
+            King whiteKing = new King(piecePosition[0], piecePosition[1]);
+            Queen blackQueen = new Queen(piecePosition[0], piecePosition[1]);
+            Queen whiteQueen = new Queen(piecePosition[0], piecePosition[1]);
+
+
             switch (pieceCode)
             {
                 case "[1,1]": return blackPawn.canMove(ChessBoard, piecePosition, 0);//0 for black pieces and 1 for white pieces
                 case "[7,2]": return whitePawn.canMove(ChessBoard, piecePosition, 1);
+                case "[8,2]": return blackTower.canMove(ChessBoard, piecePosition, 0);
+                case "[2,1]": return whiteTower.canMove(ChessBoard, piecePosition, 1);
+                case "[9,2]": return blacKnight.canMove(ChessBoard, piecePosition, 0);
+                case "[3,1]": return whiteKnight.canMove(ChessBoard, piecePosition, 1);
+                case "[4,1]": return whiteBishop.canMove(ChessBoard, piecePosition, 1);
+                case "[10,2]":return blackBishop.canMove(ChessBoard, piecePosition, 0);
+                case "[6,1]":return whiteKing.canMove(ChessBoard, piecePosition, 1);
+                case "[12,2]":return blackKing.canMove(ChessBoard, piecePosition, 0);
+                case "[5,1]":return whiteQueen.canMove(ChessBoard, piecePosition, 1);
+                case "[11,2]":return blackQueen.canMove(ChessBoard, piecePosition, 0);
                 default: return new List<int[]>();
             }
         }
