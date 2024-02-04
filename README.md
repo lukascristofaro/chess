@@ -2,6 +2,10 @@
 
 The Chess project is a C# implementation with WPF of a local chess game, allowing players to compete in turn-based matches on the same PC. The game features a display system for move possibilities and a game recording functionality.
 
+## Screenshots
+
+![image](https://github.com/lukascristofaro/chess/assets/112957970/bfcb4882-5ec1-4878-b036-e0f32ed8761b)
+
 ## Color Reference
 
 | Color             | Hex                                                                |
@@ -26,10 +30,6 @@ Install my-project with git
 ```bash
   git clone https://github.com/lukascristofaro/chess.git
 ```
-
-## Screenshots
-
-![image](https://github.com/lukascristofaro/chess/assets/112957970/bfcb4882-5ec1-4878-b036-e0f32ed8761b)
 
 ## Authors
 
