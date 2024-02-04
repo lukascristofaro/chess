@@ -150,7 +150,7 @@ namespace WpfApp1.MVVM.View
                 // Check if the destination is a valid move
                 if (pieceMoves.Contains(destination))
                 {
-                    
+                    //nothing
                 }
                 else
                 {
