@@ -90,6 +90,11 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    if (x + i < 8)
+                    {
+                        possibleMoves.Add(new int[] { x + i, y });
+
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -102,6 +107,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    if (x-i >= 0)
+                    {
+                        possibleMoves.Add(new[] { x - i, y });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -115,6 +124,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    if (y+i < 8)
+                    {
+                        possibleMoves.Add(new int[] {x, y + i});
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -127,6 +140,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    if (y-i >= 0)
+                    {
+                        possibleMoves.Add(new int[] {x, y-i});
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -151,8 +168,27 @@ namespace chess.MVVM.Models
             {
                 possibleMoves.Add(new int[] { x, y - 1 });
             }
+            List<int[]> RpossibleMoves = new List<int[]>();
 
-            return possibleMoves;
+            foreach (int[] move in possibleMoves)
+            {
+                if (color == 0)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("2") == false) {
+                        RpossibleMoves.Add(move);
+
+                    }
+                } else if (color == 1)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("1") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+            }
+
+            return RpossibleMoves;
         }
     }
     class Knight : APiece
@@ -190,7 +226,30 @@ namespace chess.MVVM.Models
                 }
             }
 
-            return possibleMoves;
+            List<int[]> RpossibleMoves = new List<int[]>();
+
+            foreach (int[] move in possibleMoves)
+            {
+                if (color == 0)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("2") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+                else if (color == 1)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("1") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+            }
+
+            return RpossibleMoves;
+
         }
     }
     class Bishop : APiece
@@ -216,6 +275,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x + i, y + i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -228,6 +288,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x - i, y + i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -240,6 +301,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x + i, y - i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -252,11 +314,34 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x - i, y - i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
 
-            return possibleMoves;
+            List<int[]> RpossibleMoves = new List<int[]>();
+
+            foreach (int[] move in possibleMoves)
+            {
+                if (color == 0)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("2") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+                else if (color == 1)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("1") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+            }
+
+            return RpossibleMoves;
         }
     }
     class King : APiece
@@ -293,7 +378,29 @@ namespace chess.MVVM.Models
                 }
             }
 
-            return possibleMoves;
+            List<int[]> RpossibleMoves = new List<int[]>();
+
+            foreach (int[] move in possibleMoves)
+            {
+                if (color == 0)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("2") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+                else if (color == 1)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("1") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+            }
+
+            return RpossibleMoves;
         }
     }
 
@@ -320,6 +427,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x + i, y });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -332,6 +440,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x - i, y });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -345,6 +454,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x, y + i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -357,6 +467,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x, y - i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -370,6 +481,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x + i, y + i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -382,6 +494,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x - i, y + i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -394,6 +507,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x + i, y - i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -406,11 +520,34 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    possibleMoves.Add(new int[] { x - i, y - i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
 
-            return possibleMoves;
+            List<int[]> RpossibleMoves = new List<int[]>();
+
+            foreach (int[] move in possibleMoves)
+            {
+                if (color == 0)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("2") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+                else if (color == 1)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("1") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+            }
+
+            return RpossibleMoves;
         }
     }
 }
