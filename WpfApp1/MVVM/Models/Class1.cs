@@ -39,20 +39,31 @@ namespace chess.MVVM.Models
             }
 
             // Check regular forward move
-            if (ChessBoard[x + direction, y] == "0")
+            if (x + direction < 8)
             {
-                possibleMoves.Add(new int[] { x + direction, y });
+                if (ChessBoard[x + direction, y] == "0")
+                {
+                    possibleMoves.Add(new int[] { x + direction, y });
+
+                }
+
             }
 
             // Check capturing moves
-            if (y != 7 && ChessBoard[x + direction, y + 1] != "0" && ChessBoard[x + direction, y + 1][0] - '0' != color)
+            if (x + direction < 8 && y + 1 < 8)
             {
-                possibleMoves.Add(new int[] { x + direction, y + 1 });
+                if (y != 7 && ChessBoard[x + direction, y + 1] != "0" && ChessBoard[x + direction, y + 1][0] - '0' != color)
+                {
+                    possibleMoves.Add(new int[] { x + direction, y + 1 });
+                }
             }
 
-            if (y != 0 && ChessBoard[x + direction, y - 1] != "0" && ChessBoard[x + direction, y - 1][0] - '0' != color)
+            if (x + direction < 8 && y - 1 >= 0)
             {
-                possibleMoves.Add(new int[] { x + direction, y - 1 });
+                if (y != 0 && ChessBoard[x + direction, y - 1] != "0" && ChessBoard[x + direction, y - 1][0] - '0' != color)
+                {
+                    possibleMoves.Add(new int[] { x + direction, y - 1 });
+                }
             }
 
             // Check the +1 move for the first move

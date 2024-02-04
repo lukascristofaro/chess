@@ -46,18 +46,6 @@ namespace WpfApp1.MVVM.View
 
         private void initChess_Click(object sender, RoutedEventArgs e)
         {
-            string[,] chessPieces = new string[8, 8]
-            {
-                {"[2,1]", "[3,1]", "[4,1]", "[5,1]", "[6,1]", "[4,1]", "[3,1]", "[2,1]"},
-                {"[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]"},
-                {"0", "0", "0", "0", "0", "0", "0", "0"},
-                {"0", "0", "0", "0", "0", "0", "0", "0"},
-                {"0", "0", "0", "0", "0", "0", "0", "0"},
-                {"0", "0", "0", "0", "0", "0", "0", "0"},
-                {"[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]"},
-                {"[8,2]", "[9,2]", "[10,2]", "[11,2]", "[12,2]", "[10,2]", "[9,2]", "[8,2]"}
-            };
-
             SaveChessboard.InitChessBoard(chessPieces);
         }
 
@@ -112,10 +100,6 @@ namespace WpfApp1.MVVM.View
                     isPieceSelected = true;
                     selectedButton = getPosition(button);
 
-                SaveChessboard.SaveChessPieces(chessPieces);
-
-                // Faites quelque chose avec les coordonnées (par exemple, affichez-les)
-                MessageBox.Show($"Bouton cliqué : Ligne {row}, Colonne {col}");
                     if (chessPieces[selectedButton[0], selectedButton[1]] != "0")
                     {
                         selectedPiece = getPosition(button);
@@ -186,6 +170,7 @@ namespace WpfApp1.MVVM.View
                     chessPieces[destination[0], destination[1]] = selectedType;
                     chessPieces[selectedPiece[0], selectedPiece[1]] = "0";
                     player.SwitchTurn();
+                    SaveChessboard.SaveChessPieces(chessPieces);
 
                     // Update the chessboard
                     UpdateChessboardButtonsContent();

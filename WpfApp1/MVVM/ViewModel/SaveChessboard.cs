@@ -197,7 +197,7 @@ namespace WpfApp1.MVVM.ViewModel
 
                 if (chessPiecesList != null && numberParty >= 0 && numberParty < chessPiecesList.Count)
                 {
-                    return chessPiecesList[numberParty].Count;
+                    return chessPiecesList[numberParty].Count - 1;
                 }
                 else
                 {

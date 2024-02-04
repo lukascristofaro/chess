@@ -118,7 +118,7 @@ namespace WpfApp1.MVVM.View
             switch (pieceCode)
             {
                 case "[1,1]": return "/assets/white_pawn.png";
-                case "[2,1]": return "/assets/white_rook.png";
+                case "[8,1]": return "/assets/white_rook.png";
                 case "[3,1]": return "/assets/white_knight.png";
                 case "[4,1]": return "/assets/white_bishop.png";
                 case "[5,1]": return "/assets/white_queen.png";
@@ -126,11 +126,16 @@ namespace WpfApp1.MVVM.View
                 case "[7,2]": return "/assets/black_pawn.png";
                 case "[8,2]": return "/assets/black_rook.png";
                 case "[9,2]": return "/assets/black_knight.png";
-                case "[10,2]": return "/assets/black_bishop.png";
-                case "[11,2]": return "/assets/black_queen.png";
-                case "[12,2]": return "/assets/black_king.png";
+                case "[20,2]": return "/assets/black_bishop.png";
+                case "[23,2]": return "/assets/black_queen.png";
+                case "[22,2]": return "/assets/black_king.png";
                 default: return "";
             }
+        }
+
+        private void btnApres_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

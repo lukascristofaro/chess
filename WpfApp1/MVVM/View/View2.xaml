@@ -18,6 +18,7 @@
                         Width="80"
                         Height="30"
                         FontSize="14"
+                        Foreground="White"
                         Style="{StaticResource MenuButtonTheme}"
                         Click="BtnAvant_Click"/>
                 <RadioButton x:Name="btnApres"
@@ -25,8 +26,9 @@
                         Width="80"
                         Height="30"
                         FontSize="14"
+                        Foreground="White"
                         Style="{StaticResource MenuButtonTheme}"
-                        Click="BtnApres_Click"/>
+                        Click="BtnApres_Click" Checked="btnApres_Checked"/>
                 <ComboBox x:Name="PartyComboBox"
                       ItemsSource="{Binding Parties}" SelectedIndex="{Binding CurrentPartyIndex, Mode=TwoWay}"
                       DisplayMemberPath="PartyName" SelectedValuePath="PartyIndex" RenderTransformOrigin="0.5,0.5" Width="80" Height="25">
