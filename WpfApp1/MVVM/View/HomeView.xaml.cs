@@ -20,14 +20,14 @@ namespace WpfApp1.MVVM.View
         }
         string[,] chessPieces = new string[8, 8]
             {
-                {"[2,1]", "[3,1]", "[4,1]", "[6,1]", "[5,1]", "[4,1]", "[3,1]", "[2,1]"},
+                {"[8,1]", "[3,1]", "[4,1]", "[6,1]", "[5,1]", "[4,1]", "[3,1]", "[8,1]"},
                 {"[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]", "[1,1]"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"0", "0", "0", "0", "0", "0", "0", "0"},
                 {"[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]", "[7,2]"},
-                {"[8,2]", "[9,2]", "[10,2]", "[12,2]", "[11,2]", "[10,2]", "[9,2]", "[8,2]"}
+                {"[8,2]", "[9,2]", "[20,2]", "[22,2]", "[23,2]", "[20,2]", "[9,2]", "[8,2]"}
             };
 
         int[] selectedButton = new int[2];
@@ -196,15 +196,15 @@ namespace WpfApp1.MVVM.View
                 case "[1,1]": return blackPawn.canMove(ChessBoard, piecePosition, 0);//0 for black pieces and 1 for white pieces
                 case "[7,2]": return whitePawn.canMove(ChessBoard, piecePosition, 1);
                 case "[8,2]": return blackTower.canMove(ChessBoard, piecePosition, 0);
-                case "[2,1]": return whiteTower.canMove(ChessBoard, piecePosition, 1);
+                case "[8,1]": return whiteTower.canMove(ChessBoard, piecePosition, 1);
                 case "[9,2]": return blacKnight.canMove(ChessBoard, piecePosition, 0);
                 case "[3,1]": return whiteKnight.canMove(ChessBoard, piecePosition, 1);
                 case "[4,1]": return whiteBishop.canMove(ChessBoard, piecePosition, 1);
-                case "[10,2]":return blackBishop.canMove(ChessBoard, piecePosition, 0);
+                case "[20,2]":return blackBishop.canMove(ChessBoard, piecePosition, 0);
                 case "[6,1]":return whiteKing.canMove(ChessBoard, piecePosition, 1);
-                case "[12,2]":return blackKing.canMove(ChessBoard, piecePosition, 0);
+                case "[22,2]":return blackKing.canMove(ChessBoard, piecePosition, 0);
                 case "[5,1]":return whiteQueen.canMove(ChessBoard, piecePosition, 1);
-                case "[11,2]":return blackQueen.canMove(ChessBoard, piecePosition, 0);
+                case "[23,2]":return blackQueen.canMove(ChessBoard, piecePosition, 0);
                 default: return new List<int[]>();
             }
         }
@@ -219,7 +219,7 @@ namespace WpfApp1.MVVM.View
             switch (pieceCode)
             {
                 case "[1,1]": return "/assets/white_pawn.png";
-                case "[2,1]": return "/assets/white_rook.png";
+                case "[8,1]": return "/assets/white_rook.png";
                 case "[3,1]": return "/assets/white_knight.png";
                 case "[4,1]": return "/assets/white_bishop.png";
                 case "[5,1]": return "/assets/white_queen.png";
@@ -227,9 +227,9 @@ namespace WpfApp1.MVVM.View
                 case "[7,2]": return "/assets/black_pawn.png";
                 case "[8,2]": return "/assets/black_rook.png";
                 case "[9,2]": return "/assets/black_knight.png";
-                case "[10,2]": return "/assets/black_bishop.png";
-                case "[11,2]": return "/assets/black_queen.png";
-                case "[12,2]": return "/assets/black_king.png";
+                case "[20,2]": return "/assets/black_bishop.png";
+                case "[23,2]": return "/assets/black_queen.png";
+                case "[22,2]": return "/assets/black_king.png";
                 default: return "";
             }
         }
