@@ -535,7 +535,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    if (x+i < 8 && y + i >= 0)
+                    if (x+i < 8 && y - i >= 0)
                     {
                         possibleMoves.Add(new int[] { x + i, y - i });
 
