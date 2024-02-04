@@ -12,7 +12,7 @@ Insert gif or link to demo
 | ----------------- | ------------------------------------------------------------------ |
 | Example Color | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) #FFFFFF |
 | Example Color | ![#1F1F1F](https://via.placeholder.com/10/1F1F1F?text=+) #1F1F1F |
-| Example Color | ![#109888](https://via.placeholder.com/10/109888?text=+) #109888 |
+| Green | ![#109888](https://via.placeholder.com/10/109888?text=+) #109888 |
 | Beige | ![#F5F5DC](https://via.placeholder.com/10/F5F5DC?text=+) #F5F5DC |
 | Brown | ![#A52A2A](https://via.placeholder.com/10/A52A2A?text=+) #A52A2A |
 
