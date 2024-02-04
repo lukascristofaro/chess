@@ -83,11 +83,11 @@ namespace WpfApp1.MVVM.View
 
             if (sender is Button button)
             {
-                isPieceSelected = !isPieceSelected; // Toggle the selection status
-
-                if (isPieceSelected)
+                if (!isPieceSelected)
                 {
+                    isPieceSelected = true;
                     selectedButton = getPosition(button);
+
                     if (chessPieces[selectedButton[0], selectedButton[1]] != "0")
                     {
                         selectedPiece = getPosition(button);
@@ -114,14 +114,32 @@ namespace WpfApp1.MVVM.View
                 }
                 else
                 {
-                    // Deselect the piece and update the chessboard
-                    chessPieces[selectedButton[0], selectedButton[1]] = "0";
-                    chessPieces[Grid.GetRow(button), Grid.GetColumn(button)] = selectedType;
+                    // Check if the clicked button is one of the valid moves
+                    int[] clickedPosition = getPosition(button);
+                    if (pieceMoves.Contains(clickedPosition))
+                    {
+                        // Deselect the piece and update the chessboard
+                        chessPieces[selectedButton[0], selectedButton[1]] = "0";
+                        chessPieces[Grid.GetRow(button), Grid.GetColumn(button)] = selectedType;
 
-                    UpdateChessboardButtonsContent();
+                        UpdateChessboardButtonsContent();
+                    }
+                    else
+                    {
+                        // Handle invalid move (e.g., display a message)
+                    }
+
+                    // Remove the event handler from all buttons
+                    foreach (Button b in ChessGrid.Children.OfType<Button>())
+                    {
+                        b.Click -= TargetButton_Click;
+                    }
+
+                    isPieceSelected = false;
                 }
             }
         }
+
 
         private void TargetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -132,16 +150,16 @@ namespace WpfApp1.MVVM.View
                 // Check if the destination is a valid move
                 if (pieceMoves.Contains(destination))
                 {
-                    // Move the piece to the destination
+                    
+                }
+                else
+                {
+                    MessageBox.Show($"Error");
                     chessPieces[destination[0], destination[1]] = selectedType;
                     chessPieces[selectedPiece[0], selectedPiece[1]] = "0";
 
                     // Update the chessboard
                     UpdateChessboardButtonsContent();
-                }
-                else
-                {
-                    // Handle invalid move (e.g., display a message)
                 }
 
                 // Remove the event handler from all buttons
