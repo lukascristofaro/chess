@@ -35,7 +35,8 @@ namespace WpfApp1.MVVM.View
         int[] selectedPiece = new int[2];
         List<int[]> pieceMoves = new List<int[]>();
         private bool isPieceSelected = false;
-
+        private int turn;
+        private Player player = new Player();
 
         private void CreateChessboardButtons()
         {
@@ -108,6 +109,7 @@ namespace WpfApp1.MVVM.View
                             {
                                 targetButton.Background = Brushes.Green;
                                 targetButton.Click += TargetButton_Click; // Add event handler for the selected move
+                                turn = player.GetCurrentPlayer();
                             }
                         }
                     }
@@ -152,10 +154,11 @@ namespace WpfApp1.MVVM.View
                 {
                     //nothing
                 }
-                else
+                else if (selectedType.Contains("1") && turn == 1 || selectedType.Contains("2") && turn == 2)
                 {
                     chessPieces[destination[0], destination[1]] = selectedType;
                     chessPieces[selectedPiece[0], selectedPiece[1]] = "0";
+                    player.SwitchTurn();
 
                     // Update the chessboard
                     UpdateChessboardButtonsContent();
