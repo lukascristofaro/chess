@@ -275,7 +275,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x + i, y + i });
+                    if (x+i < 8 && y+i < 8)
+                    {
+                        possibleMoves.Add(new int[] { x + i, y + i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -288,7 +291,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x - i, y + i });
+                    if (x-i >=0 && y+i < 8)
+                    {
+                        possibleMoves.Add(new int[] { x - i, y + i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -300,8 +306,11 @@ namespace chess.MVVM.Models
                     possibleMoves.Add(new int[] { x + i, y - i });
                 }
                 else
-                {
-                    possibleMoves.Add(new int[] { x + i, y - i });
+                {   
+                    if (x+i < 8 && y-i >= 0)
+                    {
+                        possibleMoves.Add(new int[] { x + i, y - i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -314,6 +323,7 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
+                    if (x-i >=0 && y-i >= 0)
                     possibleMoves.Add(new int[] { x - i, y - i });
                     break; // Stop checking in this direction if there's an obstacle
                 }
@@ -427,7 +437,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x + i, y });
+                    if (x + i < 8)
+                    {
+                        possibleMoves.Add(new int[] { x + i, y });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -440,7 +453,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x - i, y });
+                    if (x-i >= 0)
+                    {
+                        possibleMoves.Add(new int[] { x - i, y });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -454,7 +470,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x, y + i });
+                    if ( y+i < 8)
+                    {
+                        possibleMoves.Add(new int[] { x, y + i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -467,7 +486,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x, y - i });
+                    if (y-i >= 0)
+                    {
+                        possibleMoves.Add(new int[] { x, y - i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -481,7 +503,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x + i, y + i });
+                    if (y + i < 8 && x+i < 8)
+                    {
+                        possibleMoves.Add(new int[] { x + i, y + i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -494,7 +519,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x - i, y + i });
+                    if (x-i >= 0 && y+i < 8)
+                    {
+                        possibleMoves.Add(new int[] { x - i, y + i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -507,7 +535,11 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x + i, y - i });
+                    if (x+i < 8 && y + i >= 0)
+                    {
+                        possibleMoves.Add(new int[] { x + i, y - i });
+
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
@@ -520,7 +552,10 @@ namespace chess.MVVM.Models
                 }
                 else
                 {
-                    possibleMoves.Add(new int[] { x - i, y - i });
+                    if (x-i >= 0 && y-i >=0)
+                    {
+                        possibleMoves.Add(new int[] { x - i, y - i });
+                    }
                     break; // Stop checking in this direction if there's an obstacle
                 }
             }
