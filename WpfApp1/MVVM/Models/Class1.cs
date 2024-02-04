@@ -64,7 +64,29 @@ namespace chess.MVVM.Models
                 }
             }
 
-            return possibleMoves;
+            List<int[]> RpossibleMoves = new List<int[]>();
+
+            foreach (int[] move in possibleMoves)
+            {
+                if (color == 1)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("2") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+                else if (color == 0)
+                {
+                    if (ChessBoard[move[0], move[1]] == "0" || ChessBoard[move[0], move[1]].Contains("1") == false)
+                    {
+                        RpossibleMoves.Add(move);
+
+                    }
+                }
+            }
+
+            return RpossibleMoves;
         }
     }
     class Tower : APiece
