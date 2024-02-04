@@ -19,10 +19,6 @@
             <DataTemplate DataType="{x:Type viewModel:ViewModel2}">
                 <view:View2/>
             </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:ViewModel3}">
-                <view:View3/>
-            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

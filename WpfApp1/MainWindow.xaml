@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:WpfApp1.MVVM.ViewModel"
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="500" Width="1000"
         WindowStyle="None"
         ResizeMode ="NoResize"
         Background="Transparent"
@@ -16,8 +16,8 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
-    <Border Background="#272537" CornerRadius="20">
+
+    <Border Background="#1F1F1F" CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -25,13 +25,13 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
 
-            <StackPanel Grid.Row="1">
-                <RadioButton Content="Home"
+            <StackPanel Grid.Row="1" VerticalAlignment="top" Margin="10">
+                <RadioButton Content="Play"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
@@ -40,29 +40,17 @@
                              Command="{Binding HomeViewCommand}"/>
 
 
-                <RadioButton Content="view1"
+                <RadioButton Content="Record"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding View2Command}"/>
-
-                <RadioButton Content="view2"
-                             Height="50"
-                             Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding View3Command}"/>
-
-
             </StackPanel>
             <ContentControl Grid.Row="1"
                         Grid.Column="1"
                             Margin="10"
                             Content="{Binding CurrentView}"/>
         </Grid>
-
-
-
     </Border>
-
 </Window>
