@@ -44,6 +44,11 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
             </Border>
+            <Button x:Name="initChess"
+                    Content="Start/Restart" 
+                    Width="80"
+                    Height="30"
+                    Click="initChess_Click"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

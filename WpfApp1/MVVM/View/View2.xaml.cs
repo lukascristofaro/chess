@@ -1,37 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfApp1.MVVM.ViewModel;
 
 namespace WpfApp1.MVVM.View
 {
     public partial class View2 : UserControl
     {
-
         private string[,] chessPieces = new string[8, 8];
         private int currentPositionIndex = 0;
         private int maxPosition = SaveChessboard.GetAllChessPieces();
+        private int numberOfParties = SaveChessboard.GetNumberOfParties();
+
+        public List<PartyItem> Parties { get; set; } = new List<PartyItem>();
+        public int CurrentPartyIndex { get; set; } = 0;
 
         public View2()
         {
             InitializeComponent();
 
+            for (int i = 0; i < numberOfParties; i++)
+            {
+                Parties.Add(new PartyItem { PartyIndex = i, PartyName = $"Party {i + 1}" });
+            }
+
+            DataContext = this;
+
+            PartyComboBox.SelectionChanged += PartyComboBox_SelectionChanged;
+
             if (maxPosition > 0)
             {
-                chessPieces = SaveChessboard.GetChessboardAtPosition(currentPositionIndex);
+                chessPieces = SaveChessboard.GetChessboardAtPosition(currentPositionIndex, CurrentPartyIndex);
                 ShowChessboard();
             }
+        }
+
+        public class PartyItem
+        {
+            public int PartyIndex { get; set; }
+            public string PartyName { get; set; }
         }
 
         private void BtnAvant_Click(object sender, RoutedEventArgs e)
@@ -52,11 +62,22 @@ namespace WpfApp1.MVVM.View
             }
         }
 
+        private void PartyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Handle party change here
+            CurrentPartyIndex = PartyComboBox.SelectedIndex;
+            currentPositionIndex = 0;
+            ShowChessboard();
+        }
+
         private void ShowChessboard()
         {
-            chessPieces = SaveChessboard.GetChessboardAtPosition(currentPositionIndex);
+            chessPieces = SaveChessboard.GetChessboardAtPosition(currentPositionIndex, CurrentPartyIndex);
             if (chessPieces != null)
             {
+                // Clear the existing buttons in ChessGrid
+                ChessGrid.Children.Clear();
+
                 int numRows = 8;
                 int numCols = 8;
 

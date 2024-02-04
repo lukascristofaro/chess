@@ -8,7 +8,7 @@
              d:DesignHeight="450" 
              d:DesignWidth="800">
     <StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="447">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="497">
             <TextBlock Text="Précédentes parties"
                        Foreground="White"
                        FontSize="28"
@@ -24,6 +24,18 @@
                     Width="80"
                     Height="30"
                     Click="BtnApres_Click"/>
+            <ComboBox x:Name="PartyComboBox"
+                  ItemsSource="{Binding Parties}" SelectedIndex="{Binding CurrentPartyIndex, Mode=TwoWay}"
+                  DisplayMemberPath="PartyName" SelectedValuePath="PartyIndex" RenderTransformOrigin="0.5,0.5" Width="80" Height="28" HorizontalAlignment="Center">
+                <ComboBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.477"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.117"/>
+                    </TransformGroup>
+                </ComboBox.RenderTransform>
+            </ComboBox>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
