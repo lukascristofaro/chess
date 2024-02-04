@@ -182,7 +182,7 @@ namespace WpfApp1.MVVM.ViewModel
             return null;
         }
 
-        public static int GetAllChessPieces()
+        public static int GetAllChessPieces(int numberParty)
         {
             string filePath = GetChessPiecesFilePath();
 
@@ -195,15 +195,21 @@ namespace WpfApp1.MVVM.ViewModel
                 // Désérialiser le contenu en une liste de listes de listes de listes de chaînes
                 List<List<List<List<string>>>> chessPiecesList = JsonConvert.DeserializeObject<List<List<List<List<string>>>>>(existingJsonContent);
 
-                if (chessPiecesList != null)
+                if (chessPiecesList != null && numberParty >= 0 && numberParty < chessPiecesList.Count)
                 {
-                    return chessPiecesList.Count - 1;
+                    return chessPiecesList[numberParty].Count;
+                }
+                else
+                {
+                    // Handle out of range error (numberParty)
+                    MessageBox.Show("Party number is out of range.");
                 }
             }
             else
             {
                 MessageBox.Show("Le fichier n'existe pas.");
             }
+
             return 0;
         }
 

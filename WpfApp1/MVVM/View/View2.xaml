@@ -8,41 +8,46 @@
              d:DesignHeight="450" 
              d:DesignWidth="800">
     <StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="497">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="647">
             <TextBlock Text="Précédentes parties"
                        Foreground="White"
                        FontSize="28"
-                       HorizontalAlignment="Left"
-                       Margin="10,0,0,20"/>
-            <Button x:Name="btnAvant"
-                    Content="Avant" 
-                    Width="80"
-                    Height="30"
-                    Click="BtnAvant_Click"/>
-            <Button x:Name="btnApres"
-                    Content="Après" 
-                    Width="80"
-                    Height="30"
-                    Click="BtnApres_Click"/>
-            <ComboBox x:Name="PartyComboBox"
-                  ItemsSource="{Binding Parties}" SelectedIndex="{Binding CurrentPartyIndex, Mode=TwoWay}"
-                  DisplayMemberPath="PartyName" SelectedValuePath="PartyIndex" RenderTransformOrigin="0.5,0.5" Width="80" Height="28" HorizontalAlignment="Center">
-                <ComboBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform AngleY="-0.477"/>
-                        <RotateTransform/>
-                        <TranslateTransform Y="-0.117"/>
-                    </TransformGroup>
-                </ComboBox.RenderTransform>
-            </ComboBox>
+                       Margin="0,0,20,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <RadioButton x:Name="btnAvant"
+                        Content="Avant" 
+                        Width="80"
+                        Height="30"
+                        FontSize="14"
+                        Style="{StaticResource MenuButtonTheme}"
+                        Click="BtnAvant_Click"/>
+                <RadioButton x:Name="btnApres"
+                        Content="Après" 
+                        Width="80"
+                        Height="30"
+                        FontSize="14"
+                        Style="{StaticResource MenuButtonTheme}"
+                        Click="BtnApres_Click"/>
+                <ComboBox x:Name="PartyComboBox"
+                      ItemsSource="{Binding Parties}" SelectedIndex="{Binding CurrentPartyIndex, Mode=TwoWay}"
+                      DisplayMemberPath="PartyName" SelectedValuePath="PartyIndex" RenderTransformOrigin="0.5,0.5" Width="80" Height="25">
+                    <ComboBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="-0.477"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="-0.117"/>
+                        </TransformGroup>
+                    </ComboBox.RenderTransform>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Border Width="400" Height="350" Background="#B04F4F" CornerRadius="20">
                 <Grid x:Name="ChessGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.Resources>
-                        <Style TargetType="Button">
+                        <Style TargetType="{x:Type Button}">
                             <Setter Property="BorderBrush" Value="Black"/>
                             <Setter Property="BorderThickness" Value="1"/>
                             <Setter Property="Width" Value="40"/>

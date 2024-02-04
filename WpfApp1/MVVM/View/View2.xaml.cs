@@ -12,11 +12,11 @@ namespace WpfApp1.MVVM.View
     {
         private string[,] chessPieces = new string[8, 8];
         private int currentPositionIndex = 0;
-        private int maxPosition = SaveChessboard.GetAllChessPieces();
+        private int maxPosition = SaveChessboard.GetAllChessPieces(CurrentPartyIndex);
         private int numberOfParties = SaveChessboard.GetNumberOfParties();
 
         public List<PartyItem> Parties { get; set; } = new List<PartyItem>();
-        public int CurrentPartyIndex { get; set; } = 0;
+        public static int CurrentPartyIndex { get; set; } = 0;
 
         public View2()
         {
