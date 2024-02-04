@@ -56,7 +56,7 @@ namespace chess.MVVM.Models
             }
 
             // Check the +1 move for the first move
-            if (isFirstMove)
+            if (color == 1 && piecePosition[0] == 6 || color == 0 && piecePosition[0] == 1)
             {
                 if (ChessBoard[x + direction * 2, y] == "0" && ChessBoard[x + direction, y] == "0")
                 {
