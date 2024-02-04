@@ -38,6 +38,11 @@ namespace WpfApp1.MVVM.View
         private int turn;
         private Player player = new Player();
 
+        private void UpdateTurnText()
+        {
+            TurnText.Text = $"Tour : {(player.GetCurrentPlayer() == 1 ? "Blanc" : "Noir")}";
+        }
+
         private void CreateChessboardButtons()
         {
             int numRows = 8;
@@ -162,6 +167,8 @@ namespace WpfApp1.MVVM.View
 
                     // Update the chessboard
                     UpdateChessboardButtonsContent();
+
+                    UpdateTurnText();
                 }
 
                 // Remove the event handler from all buttons
