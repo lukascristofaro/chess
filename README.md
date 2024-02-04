@@ -35,7 +35,7 @@ Install my-project with git
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![image](https://github.com/lukascristofaro/chess/assets/112957970/bfcb4882-5ec1-4878-b036-e0f32ed8761b)
 
 ## Authors
 
