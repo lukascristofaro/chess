@@ -27,8 +27,6 @@ Install my-project with git
   git clone https://github.com/lukascristofaro/chess.git
 ```
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
 ## Screenshots
 
 ![image](https://github.com/lukascristofaro/chess/assets/112957970/bfcb4882-5ec1-4878-b036-e0f32ed8761b)
